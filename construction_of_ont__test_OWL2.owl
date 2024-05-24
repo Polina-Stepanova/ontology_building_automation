@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="/content/drive/MyDrive/construction_of_ont__test_OWL2.owl"
+         xmlns="/content/drive/MyDrive/construction_of_ont__test_OWL2.owl#">
+
+<owl:Ontology rdf:about="/content/drive/MyDrive/construction_of_ont__test_OWL2.owl"/>
+
+<owl:ObjectProperty rdf:about="#чтение_имеет_результат_операции_умудрение">
+  <rdfs:domain rdf:resource="#чтение"/>
+  <rdfs:range rdf:resource="#умудрение"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#деревянный_шкаф_имеет_материал_береза">
+  <rdfs:domain rdf:resource="#деревянный_шкаф"/>
+  <rdfs:range rdf:resource="#береза"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#книжный_шкаф_имеет_использование_чтение">
+  <rdfs:range rdf:resource="#чтение"/>
+  <rdfs:domain rdf:resource="#книжный_шкаф"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#мебель">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#чтение">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#деревянный_шкаф">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf rdf:resource="#шкаф"/>
+</owl:Class>
+
+<owl:Class rdf:about="#береза">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#умудрение">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#книжный_шкаф">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf rdf:resource="#шкаф"/>
+</owl:Class>
+
+<owl:Class rdf:about="#шкаф">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf rdf:resource="#мебель"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#МОЙ_ШКАФ">
+  <rdf:type rdf:resource="#деревянный_шкаф"/>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
