@@ -138,21 +138,21 @@ for text in root:
        epos=0 #конечная граница
        best_match=""
        match_fragm=""
-       for match in goal:
+       for patmatch in goal:
            if (fpos==0):#самый первый вариант для очередного места текста
-               fpos=int(match.get("startPos"))
-               epos=int(match.get("endPos"))
-               best_match=match[1].text.lower()#что получили
-               match_fragm=match[0].text.lower()#откуда
+               fpos=int(patmatch.get("startPos"))
+               epos=int(patmatch.get("endPos"))
+               best_match=patmatch[1].text.lower()#что получили
+               match_fragm=patmatch[0].text.lower()#откуда
                match_found=True
            else:
-               if(( int(match.get("startPos"))==fpos) and (int(match.get("endPos"))>epos)):#нашли более длинный фрагмент для этого шаблона в том же месте (упорядочены как "а аб абс бс с")
-                   fpos = int(match.get("startPos"))
-                   epos = int(match.get("endPos"))
-                   best_match = match[1].text.lower()#что получили
-                   match_fragm = match[0].text.lower()#откуда
+               if(( int(patmatch.get("startPos"))==fpos) and (int(patmatch.get("endPos"))>epos)):#нашли более длинный фрагмент для этого шаблона в том же месте (упорядочены как "а аб абс бс с")
+                   fpos = int(patmatch.get("startPos"))
+                   epos = int(patmatch.get("endPos"))
+                   best_match = patmatch[1].text.lower()#что получили
+                   match_fragm = patmatch[0].text.lower()#откуда
                else:
-                   if (not(( int(match.get("startPos")) >= fpos) and (int(match.get("endPos")) <= epos))): #закончили просматривать остальные, более короткие, варианты в пределах уже найденного максимального фрагмента - это новое начало И конец
+                   if (not(( int(patmatch.get("startPos")) >= fpos) and (int(patmatch.get("endPos")) <= epos))): #закончили просматривать остальные, более короткие, варианты в пределах уже найденного максимального фрагмента - это новое начало И конец
                        #сохраняется результат из фрагмента максимальной длины на данный момент по мере просмотра, и новые крайние точки (начальная наименьшая - сохраняется из первого для группы вариантов, а конечная - наиболее отдаленная)
                        rexpmatch = re.search(rextext, crop_output(best_match))
                        if (rexpmatch!=None):
@@ -200,10 +200,10 @@ for text in root:
                                         pairrow=[curr_pat_name,role1,t1,role2,t2 ,match_fragm]
                                         df_csv.loc[len(df_csv)]=pairrow 
 
-                       fpos = int(match.get("startPos"))
-                       epos = int(match.get("endPos"))
-                       best_match = match[1].text.lower()#что получили
-                       match_fragm = match[0].text.lower()#откуда
+                       fpos = int(patmatch.get("startPos"))
+                       epos = int(patmatch.get("endPos"))
+                       best_match = patmatch[1].text.lower()#что получили
+                       match_fragm = patmatch[0].text.lower()#откуда
                        match_found=True
        if(match_found):#очередной фрагмент сравнивается и сохраняется только при переходе к рассмотрению новых границ в пределах того же фрагмента, для последнего в группе извлечений из одного фрагмента нужно провести процедуру отдельно
            rexpmatch = re.search(rextext,crop_output(best_match))
