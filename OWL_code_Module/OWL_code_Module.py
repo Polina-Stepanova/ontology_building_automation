@@ -104,7 +104,6 @@ with onto:
        spec_rel= types.new_class(inst.replace(' ','_')+'_имеет_'+subinst_rel[1].replace(' ','_')+'_'+subinst_rel[0].replace(' ','_'),(ObjectProperty,) ) 
        spec_rel.set_domain([onto[inst.replace(' ','_')]])
        spec_rel.set_range([onto[subinst_rel[0].replace(' ','_')]])
-       getattr(onto[inst.replace(' ','_')],spec_rel.name).append(onto[subinst_rel[0].replace(' ','_')])
-
+       
 
 onto.save(file = name_owl, format = "rdfxml")
