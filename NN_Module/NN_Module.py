@@ -101,13 +101,13 @@ def normalize_NP(np_src,py2_morph): # исправлено имя локальн
         tempword=p2.inflect({taggen, 'sing', 'nomn'}).word
         if (not (tempword==None)):
           np_src[ind]=tempword
-    tail_only_adj=0
+    tail_only_adj=True
     for ind in range(ind2+1,len(np_src)):
       p2=py2_morph.parse(np_src[ind])[0] # исправлена отсутствовавшая строка
       if ((p2.tag.POS!='ADJF')&(p2.tag.POS!='ADJS')&(p2.tag.POS!= 'PRTF')&(p2.tag.POS!= 'PRTS')):
-        tail_only_adj=1
+        tail_only_adj=False
         break
-    if (tail_only_adj==0):#если это "лилия белая"
+    if (tail_only_adj):#если это "лилия белая"
         for ind in range(ind2,len(np_src)):
                p2=py2_morph.parse(np_src[ind])[0]
                if  ((p2.tag.POS=='ADJF')|(p2.tag.POS=='ADJS')|(p2.tag.POS== 'PRTF')|(p2.tag.POS== 'PRTS')):
